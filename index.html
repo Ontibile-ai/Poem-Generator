@@ -9,17 +9,30 @@
   </head>
   <body>
     <h1>Poem Generator</h1>
-    <p>Welcome to the Poem Generator!</p>
+    <form>
+      <input
+        type="text"
+        placeholder="Generate a poem about..."
+        required
+        autofocus
+        autocomplete="off"
+      />
+      <input type="submit" />
+    </form>
+    <div>
+      <p>Loading the poem...</p>
+    </div>
+
     <script src="src/index.js"></script>
   </body>
   <footer>
-    This project is coded by
+    This project was coded by
     <a href="https://github.com/Ontibile-ai" target="_blank">Ontibile Mmusi</a>
-    and is hosted on
+    and is open sourced on
     <a href="https://github.com/Ontibile-ai/Poem-Generator" target="_blank"
       >GitHub</a
     >
-    and published on
+    and hosted on
     <a href="https://poemgeneratorom.netlify.app/" target="_blank">Netlify</a>.
   </footer>
 </html>
