@@ -1,12 +1,25 @@
-function generatePoem(event) {
-  event.preventDefault();
-
+function displayPoem(response) {
   new Typewriter("#poem", {
-    strings: ["Loading a Poem for You..."],
+    strings: [response.data.answer],
     autoStart: true,
     delay: 20,
     cursor: "",
   });
+}
+
+function generatePoem(event) {
+  event.preventDefault();
+  let inputElement = document.querySelector("#input-field");
+  let apiKey = "cbab4a1ta01fc9fe9f10bf357f41o145";
+  let prompt = `Generate a poem about ${inputElement.value}`;
+  let context =
+    "you are a helpful assistant. let the poem be short and sweet, with a touch of whimsy and emotion. Make sure to limit the poem to 6 lines in basic html and separate them with <br> tags. Put bullets on each line. Justify the lines. Sign the poem with <strong>With love, Ontibile.</strong>";
+  let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
+
+  console.log(`generatePoem called with input: ${inputElement.value}`);
+  console.log(`Prompt: ${prompt}`);
+  console.log(`Context: ${context}`);
+  axios.get(apiUrl).then(displayPoem);
 }
 let poemFormElement = document.querySelector("#poem-form");
 poemFormElement.addEventListener("submit", generatePoem);
